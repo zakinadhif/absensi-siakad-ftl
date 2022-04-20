@@ -1,0 +1,18 @@
+curl 'https://siswa.smktelkom-mlg.sch.id/login/act_login' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9,id;q=0.8' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+  -H 'Cookie: _ga=GA1.3.64374829.1639287038; _ga_X3TPXZRBZ3=GS1.1.1647857764.4.1.1647858006.0; PHPSESSID=r4imh602lcekvkmn45vnnq5ob8; ci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%220f434aad2f3e3718c7b761f58c07824e%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A8%3A%2210.5.5.2%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A105%3A%22Mozilla%2F5.0+%28X11%3B+Linux+x86_64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F100.0.4896.75+Safari%2F537.36%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1650447403%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7Db6d57abe1987ed43d7d854c7e2a3050e884ff7d1; cookie=97a1a728761c38b2467ea598f54b8a3a' \
+  -H 'Origin: https://siswa.smktelkom-mlg.sch.id' \
+  -H 'Referer: https://siswa.smktelkom-mlg.sch.id/login' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36' \
+  -H 'X-Requested-With: XMLHttpRequest' \
+  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="100"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Linux"' \
+  --data-raw 'email=<username>&password=<password>&token=<random-string|empty-string>&g-recaptcha-response=<random-string|empty-string>' \
+  --compressed
