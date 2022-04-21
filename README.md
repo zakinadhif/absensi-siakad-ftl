@@ -18,5 +18,7 @@ python3 main.py --get-status <email> <password>
 Percepat absen menggunakan session file:
 ```
 python3 main.py --generate-session my-session.pkl <email> <password>
-python3 main.py --use-session my-session.pkl <email> <password>
+python3 main.py --use-session my-session.pkl -m masuk -d luring
 ```
+
+Percepat lagi dengan `--skip-session-check`
