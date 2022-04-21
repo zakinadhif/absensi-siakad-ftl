@@ -27,4 +27,24 @@ Percepat lagi dengan `--skip-session-check`
 ```
 */15 6 * * 1-5 /usr/bin/python3 <absolute_path_to_script> --use-session <absolute_path_to_session_file> -m masuk -d luring --skip-session-check > /tmp/absen.txt
 ```
+
 ## Full Usage Description
+```
+usage: main.py [-h] [-d DALU] [-m MODE] [--izin PATH] [-s] [--use-session PATH] [--generate-session PATH] [--skip-session-check] [username] [password]
+
+Isi presensi pada https://siswa.smktelkom-mlg.sch.id dengan kecepatan cahaya
+
+positional arguments:
+  username              username siakad
+  password              password siakad
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DALU, --dalu DALU  pilih daring atau luring jika masuk
+  -m MODE, --mode MODE  pilih presensi yang mau diisi
+  --izin PATH           path ke foto izin jika dispensasi, sakit atau ijin
+  -s, --get-status      get status presensi dari siakad
+  --use-session PATH    gunakan session yang sudah ada atau buat kembali
+  --generate-session PATH
+  --skip-session-check  percepat proses absen dengan melewati proses cek kevalidan sesi
+```
