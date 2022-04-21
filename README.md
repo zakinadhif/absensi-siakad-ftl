@@ -1,7 +1,7 @@
 # absensi-siakad-ftl
 Faster than light absensi siakad
 
-# Usage
+## Usage
 
 Mengabsen masuk luring:
 ```
@@ -27,3 +27,4 @@ Percepat lagi dengan `--skip-session-check`
 ```
 */15 6 * * 1-5 /usr/bin/python3 <absolute_path_to_script> --use-session <absolute_path_to_session_file> -m masuk -d luring --skip-session-check > /tmp/absen.txt
 ```
+## Full Usage Description
