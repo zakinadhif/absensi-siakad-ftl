@@ -128,6 +128,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     session = None
 
+    # `--generate-session [path]`
     if args.generate_session:
         if args.username is None or args.password is None:
             parser.print_usage()
@@ -145,35 +146,36 @@ if __name__ == "__main__":
             pickle.dump(session, session_file)
         exit()
 
-    if not args.use_session:
+    # `--use-session`
+    if args.use_session:
+        if not os.path.isfile(args.use_session):
+            print(f"File sesi {args.use_session} tidak ada, anda harus membuatnya terlebih dahulu dengan --generate-session [PATH]")
+            exit(1)
+
+        with open(args.use_session, "rb") as session_file:
+            session = pickle.load(session_file)
+
+        if not args.skip_session_check and not is_logged_in(session):
+            print("Gagal login, coba buat kembali file sesi anda")
+            exit(1)
+    else:
         if args.username is None or args.password is None:
             parser.print_usage()
             print("Parameter username dan password kosong")
             exit(1)
 
         session = try_login(args.username, args.password)
-    else:
-        if not os.path.isfile(args.use_session):
-            print(f"File sesi {args.use_session} tidak ada, anda harus membuatnya terlebih dahulu dengan --generate-session [PATH]")
-            exit(-1)
 
-        with open(args.use_session, "rb") as session_file:
-            session = pickle.load(session_file)
-
-        if not args.skip_session_check and not is_logged_in(session):
-            session = False
-
-    if not args.skip_session_check and not session:
-        if args.use_session:
-            print("Gagal login, coba buat kembali file sesi anda")
-        else:
+        if not session:
             print("Gagal login, cek username dan password anda")
-        exit(1)
 
+    # `--get-status`
     if args.get_status == True:
-        print("Kehadiran:", get_status_hadir(session))
-        exit(0)
+        status_hadir = get_status_hadir(session)
+        print("Kehadiran:", status_hadir)
+        exit(0 if "masuk" in status_hadir else -1)
 
+    # `-m [masuk|izin|dispensasi|sakit]` `-d [daring|luring]`
     if args.mode:
         if args.mode == "masuk":
             if not args.dalu:
@@ -185,6 +187,7 @@ if __name__ == "__main__":
         else:
             print("Presensi dengan mode selain masuk belum didukung")
 
+    # update session file if `--use-session` is specified
     if args.use_session:
         with open(args.use_session, "wb") as session_file:
             pickle.dump(session, session_file)
