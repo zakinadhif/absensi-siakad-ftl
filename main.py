@@ -136,6 +136,11 @@ if __name__ == "__main__":
 
         session = try_login(args.username, args.password)
 
+        # Ensure session is valid
+        if not session:
+            print("Gagal membuat file sesi, cek username dan password anda")
+            exit(1)
+
         with open(args.generate_session, "wb") as session_file:
             pickle.dump(session, session_file)
         exit()
