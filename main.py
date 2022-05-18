@@ -181,7 +181,8 @@ if __name__ == "__main__":
                 print("Gagal: parameter dalu kosong, isi luring atau daring")
                 exit(1)
 
-            try_fill_attendance(Dalu[args.dalu.upper()], session)
+            if get_status_hadir(session) != "masuk":
+                try_fill_attendance(Dalu[args.dalu.upper()], session)
         else:
             print("Presensi dengan mode selain masuk belum didukung")
 
